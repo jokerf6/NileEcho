@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-0: #0b0f14;
+  --bg-1: #0f172a;
+  --gold: #d4af37;
+  --sand: #e8d9b5;
+  --cyan: #22d3ee;
+  --text: #e5e7eb;
+  --danger: #ef4444;
+}
+
+body {
+  color: var(--text);
+  background: linear-gradient(to bottom, var(--bg-0), var(--bg-1), #000);
+  min-height: 100vh;
+}
+
+.bg-pattern::before,
+.bg-pattern::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bg-pattern::before {
+  background-image: radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.08) 0, transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(212, 175, 55, 0.06) 0, transparent 25%),
+    radial-gradient(circle at 60% 70%, rgba(212, 175, 55, 0.05) 0, transparent 25%);
+}
+
+.bg-pattern::after {
+  opacity: 0.04;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.2) 3px,
+    transparent 4px
+  );
+}
+
+@layer components {
+  .nile-card {
+    @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur;
+  }
+
+  .btn-primary {
+    @apply rounded-xl bg-gold px-5 py-3 font-semibold text-black shadow-[0_0_32px_rgba(212,175,55,0.14)] transition hover:brightness-110 active:brightness-95;
+  }
+
+  .btn-secondary {
+    @apply rounded-xl border border-cyan/40 px-5 py-3 text-text shadow-[0_0_32px_rgba(34,211,238,0.10)] transition hover:bg-cyan/10;
+  }
+
+  .prompt-chip {
+    @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm transition hover:bg-white/10;
+  }
+}
